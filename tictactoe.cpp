@@ -31,7 +31,6 @@ CTictactoe::CTictactoe()
 
 CTictactoe::~CTictactoe()
 {
-    if ( CTictactoe::p_instance != nullptr ) delete CTictactoe::p_instance;
     CTictactoe::p_instance = nullptr;
 }
 
@@ -48,11 +47,7 @@ void CTictactoe::initialize()
 
 void CTictactoe::finalize()
 {
-    CTictactoe::reference_counter--;
-    if ( CTictactoe::reference_counter == 0 &&  !(CTictactoe::p_instance == nullptr) )
-    {
-        CTictactoe::release_instance();
-    }
+    if (CTictactoe::reference_counter > 0) CTictactoe::reference_counter--;
     return;    
 }
 

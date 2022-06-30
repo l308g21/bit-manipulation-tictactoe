@@ -9,7 +9,8 @@ class CTictactoe
 {
     public:
         static CTictactoe& get_instance();
-        
+        static void release_instance();
+
     public:
         void initialize();
         void finalize();
@@ -28,8 +29,6 @@ class CTictactoe
     private:
         CTictactoe();
        ~CTictactoe();
-
-        static void release_instance();
     
     private:
         uint16_t winner;
